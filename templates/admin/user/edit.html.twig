@@ -1,0 +1,9 @@
+{%  extends 'admin/base.html.twig' %}
+{% block title %}modifier droit utilisateur{% endblock %}
+{% block body %}
+     <h1> MODIFIER DROITS  UTILISATEUR</h1>
+        {{ form_start(createForm) }}
+        {{ form_widget(createForm) }}
+     <input type="submit" value="{% block btnValue %}Editer utilisateur{% endblock %}" class="btn btn-outline-success">
+        {{ form_end(createForm) }}
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'admin/base.html.twig' %}
+{% block title %}modif Element{% endblock %}
+
+{% block body %}
+    <h1>modif Element</h1>
+    {{ form_start(createForm) }}
+    {{ form_widget(createForm) }}
+    <input type="submit" value="{% block btnValue %}modifier l'élément{% endblock %}" class="btn btn-outline-success">
+    {{ form_end(createForm) }}
+{% endblock %}

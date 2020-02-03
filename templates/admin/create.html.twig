@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}admin Accueil{% endblock %}
+
+{% block body %}
+    <h1>Test Image</h1>
+    {{ form_start(createForm) }}
+    {{ form_widget(createForm) }}
+    <input type="submit" value="{% block btnValue %}Créer l'image{% endblock %}" class="btn btn-outline-success">
+    {{ form_end(createForm) }}
+{% endblock %}

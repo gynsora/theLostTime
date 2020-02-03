@@ -1,0 +1,131 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TheLostTime - classe {% endblock %}
+
+{% block Pageclasses %}active{% endblock %}
+
+{% block body %}
+
+	<div class="main">
+	
+		<div class="container">
+			<h1 class="text-center " id="headerClasses">CLASSES</h1>
+		</div>
+		
+		<div class="container-fluid topOfMenuLink" id="classes">
+		    <div class="row">
+				<div class="col-lg-4" id="voixWarrior">
+				<h2>LA VOIX DU GUERRIER</h2>
+			    <div class="text-center">
+					<a href="#classeNavTab" class="clickWarrior">
+						<img class="classesVoixImage" src="{{ asset('img/guardian.png') }}" alt="représentant de la voix du guerrier">
+					</a>
+				</div>
+			    <p>La voix du guerrier est emprunté par de valeureux combattant toujours prêts à défendre leurs convictions.
+					Les classes issues de cette voix produisent souvent des Hommes extrêmement compétent au corps à corps.
+			    </p>
+			  <div class="text-center"><a class="btn btn-primary clickWarrior" href="#classeNavTab">Info guerrier</a></div>
+			</div>
+
+			<div class="col-lg-4"  id="voixMagician">
+			  <h2>LA VOIX DU MAGICIEN</h2>
+			  <div class="text-center">
+				<a href="#classeNavTab" class="clickMagician">
+				
+				<img class="classesVoixImage" src="{{ asset('img/sorcier.png') }}" alt="représentant de la voix du magicien">
+				</a>
+			  </div>
+			  <p>La voix du magicien est emprunté par des combattant doté  d'une puissance magique hors du commun.
+			  Les classes issues de cette voix produisent souvent des Hommes compétent au combat à distance.
+			  </p>
+				<div class="text-center"><a class="btn btn-warning clickMagician" href="#classeNavTab" > Info Magicien</a></div>
+			</div>
+			
+			<div class="col-lg-4" id="voixHunter">
+			  <h2>LA VOIX  DU CHASSEUR</h2>
+			  <div class="text-center">
+				<a href="#classeNavTab" class="clickHunter">
+				<img class="classesVoixImage" src="{{ asset('img/hunterShoot.png') }}" alt="représentant de la voix du chasseur">
+				</a>
+			  </div>
+			  <p>La voix du chasseur est emprunté par des combattant doté d'une intelligence stratégique à toute épreuve.
+			   Les classes issues de cette voix produisent souvent des Hommes compétent lorsqu'il s'agit de pièger et de ralentir l'ennemi.
+			   
+
+			  </p>
+				<div class="text-center"><a class="btn btn-success clickHunter" href="#classeNavTab">Info Chasseur</a></div>
+			</div>
+		</div>
+	</div>
+	
+		
+				  <div class="container-fluid topOfMenuLink" id="classeNavTab">
+					  <div class="row">
+						<div class="col-md-8  m-auto">  
+						  <ul class="nav nav-tabs " >
+						  {% for classe in classes %}
+							<li class="col-lg-2 col-md-3 col-sm-4 col-4"><a href="#{{classe.name}}"><img class="navImage" src="{{asset('img/' ~classe.image.dossier~'/nav-'~classe.image.url)}}" alt="image lien {{classe.name}}"></a></li>
+						  {% endfor %}
+						  </ul>
+						</div> 
+					   </div>
+					</div>
+			</div>
+			<div class="tab-content row ">
+				{% for classe in classes %}
+					<div id="{{ classe.name }}" class="tab-pane fade col-md-8  offset-md-2 ">
+					  <h2>{{classe.name |upper}}</h2>
+					  <div class="divImageClasse"><img class="imageClasse" src="{{asset('img/' ~classe.image.dossier~'/'~classe.image.url)}}" alt="{{classe.image.alt}}"></div>
+					  <p>{{ classe.description |raw('html') }}</p>
+					  <p>
+						{% for esprit in classe.esprits %}
+							<div> {{esprit.name}} a</div>
+							<div>
+								<img class="imageClasse" src="{{asset('img/esprit/'~esprit.image.url)}}" alt="{{esprit.image.alt}}">
+							</div>
+							{% for sort in sorts %}
+								{% if sort.esprit.name == esprit.name %}
+									{{sort.name}}
+								{% endif %}
+							{% endfor %}
+						{% endfor %}
+					  
+					  </p>
+					</div>
+				{% endfor %}
+				
+			
+	</div>
+{% endblock %}
+
+{% block javascript %}
+<script>
+$(document).ready(function(){
+//ANIMATE
+  $("#btn1").click(function(){
+      $("#output").animate({height:"100px"},2000);
+  });
+  function  modificationOfTab(mainClass, childClass, manipClass){
+		  $(mainClass).addClass(manipClass);
+			$(childClass).removeClass(manipClass);
+		 	$(childClass).tab('show');
+	 }
+	 //initialister le nav-tab avec la premiere classe guardian
+	 modificationOfTab('.nav-tabs a','.nav-tabs a[href="#guardian"]','ici');
+	 //modifie le nav-tab recuperer en utilsant le click (guardian/sorcier/archer)
+	 $(".clickWarrior").click(function(){
+		modificationOfTab('.nav-tabs a','.nav-tabs a[href="#guardian"]','ici');
+	 });
+	 $(".clickMagician").click(function(){
+		 modificationOfTab('.nav-tabs a','.nav-tabs a[href="#sorcier"]','ici');
+  	});
+		$(".clickHunter").click(function(){
+ 		 modificationOfTab('.nav-tabs a','.nav-tabs a[href="#sniper"]','ici');
+   	});
+		//modifie la nav tab tab en fonction du tab cliker
+	 $(".nav-tabs a").click(function(){
+		 modificationOfTab('.nav-tabs a',this,'ici');
+ 	 });
+});
+</script>
+{% endblock %}

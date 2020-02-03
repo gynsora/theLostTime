@@ -1,0 +1,67 @@
+{% extends 'admin/base.html.twig' %}
+{% block title %}Les Eléments de the Lost time{% endblock %}
+{% block body %}
+    <h1 class="text-center"> Liste des éléments du jeu</h1>
+    <div class="container">
+        <div class="row ajout" >
+            <a href="{{ path("app_admin_createelement") }}" class="btn btn-primary">Ajouter un élement</a>
+        </div>
+        {% for elementPar3 in elements| batch(3) %}
+            <div class="row">
+                {% for element in elementPar3 %}
+
+                    <div class="card col-md-4">
+                        <img class="card-img-top" src="{{ asset('img/' ~element.image.dossier~'/'~element.image.url) }}" alt="{{ element.image.alt }}">
+                        <div class="card-body">
+                            <h5 class="card-title">nom de l'élément :  {{ element.name }}</h5>
+                            <p class="card-text">
+                                description de l'élément <br>{{ element.description }}
+                            </p>
+                        </div>
+                        <div class="card-footer text-muted">
+                            <a href="{{ path("app_admin_updateelement",{id:element.id}) }}" class="btn btn-warning">Modifier</a>
+                            <button data-url="{{ path('app_admin_deleteelement',{id:element.id}) }}" data-nom="{{element.name}}" type="button" class="btn btn-danger modelise {{ element.name }}" data-toggle="modal" data-target="#exampleModalCenter">
+                                Supprimer
+                            </button>
+                        </div>
+                    </div>
+
+                {% endfor %}
+            </div>
+        {% endfor %}
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Suppresion d'element</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Etes-vous sur de vouloir supprimer l'element :
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <a href="" class="btn btn-danger">Supprimer </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block javascript %}
+<script>
+$(function() {
+    $( ".modelise" ).on( "click", function() {
+        // console.log($(this).data('url'));
+        //console.log($(this).data('nom'));
+        $(".modal-body").html( "Etes-vous sur de vouloir supprimer l'element : "+$(this).data('nom') );
+        $(".modal-footer a").attr("href", $(this).data('url') );
+    });
+});
+</script>
+{% endblock %}

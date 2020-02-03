@@ -1,0 +1,11 @@
+{% extends 'moderateur/base.html.twig' %}
+
+{% block title %}article creation{% endblock %}
+
+{% block body %}
+    <h1>article creation</h1>
+    {{ form_start(createForm) }}
+    {{ form_widget(createForm) }}
+    <input type="submit" value="{% block btnValue %}Créer votre article{% endblock %}" class="btn btn-outline-success">
+    {{ form_end(createForm) }}
+{% endblock %}

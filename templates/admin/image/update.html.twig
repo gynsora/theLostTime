@@ -1,0 +1,11 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}modif image{% endblock %}
+
+{% block body %}
+    <h1>modif Image</h1>
+    {{ form_start(createForm) }}
+    {{ form_widget(createForm) }}
+    <input type="submit" value="{% block btnValue %}modifier l'image{% endblock %}" class="btn btn-outline-success">
+    {{ form_end(createForm) }}
+{% endblock %}

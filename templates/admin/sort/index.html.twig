@@ -1,0 +1,70 @@
+{% extends 'admin/base.html.twig' %}
+{% block title %}Sorts du jeu{% endblock %}
+{% block body %}
+    <h1 class="text-center">Liste des sorts du jeu</h1>
+    <div class="container">
+        <div class="row ajout" >
+            <a href="{{ path("app_admin_createsort") }}" class="btn btn-primary">Ajouter un sort</a>
+        </div>
+		
+        {% for sortPar3 in sorts| batch(3) %}
+            <div class="row">
+                {% for sort in sortPar3 %}
+
+                    <div class="card col-md-4">
+                        <img class="card-img-top" src="{{ asset('img/' ~sort.image.dossier~'/'~sort.image.url) }}" alt="{{ sort.image.alt }}">
+                        <div class="card-body">
+                            <h5 class="card-title">nom du sort: {{ sort.name }}</h5>
+                            <p class="card-text">
+								esprit :  {{ sort.esprit.name }} <br>
+								élément : {{ sort.esprit.element.name }}   <br>
+                                description:<br> {{ sort.description }}
+                            </p>
+                        </div>
+                        <div class="card-footer text-muted">
+                            <a href="{{ path("app_admin_updatesort",{id:sort.id}) }}" class="btn btn-warning">Modifier</a>
+                            <button data-url="{{ path('app_admin_deletesort',{id:sort.id}) }}" data-nom="{{sort.name}}" type="button" class="btn btn-danger modelise {{ sort.name }}" data-toggle="modal" data-target="#exampleModalCenter">
+                                Supprimer
+                            </button>
+                        </div>
+                    </div>
+
+                {% endfor %}
+            </div>
+        {% endfor %}
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Etes-vous sur de vouloir supprimer le sort :
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <a href="" class="btn btn-danger">Supprimer </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block javascript %}
+<script>
+$(function() {
+    $( ".modelise" ).on( "click", function() {
+        // console.log($(this).data('url'));
+        //console.log($(this).data('nom'));
+        $(".modal-body").html( "Etes-vous sur de vouloir supprimer le sort : "+$(this).data('nom') );
+        $(".modal-footer a").attr("href", $(this).data('url') );
+    });
+});
+</script>
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TheLostTime{% endblock %}
+
+{% block Pageindex %} active {% endblock %}
+
+{% block body %}
+    <div class="container-fluid" id="backgroundAccueil">
+        
+        <div class="container-fluid" id="introduction">
+			<div class="row">
+				<div class="col-sm-4 col-md-3">
+					<img src="{{ asset('img/logoz.png')}}" />					
+					
+				</div>				
+			</div>
+			<div id="textBaniere" >
+				<span > LA GUERRE  APPROCHE ! </span>
+			</div>
+		</div>
+		
+		
+        <div id="videoAccueil">
+            <video class="ak-widget-video" autoplay="" muted="" loop="loop" poster="https://s.ankama.com/www/static.ankama.com/ankama/cms/images/296/2018/12/11/947654.jpg">
+                <source type="video/mp4" src="https://s.ankama.com/www/static.ankama.com/ankama/cms/file/297/947704.mp4">
+                <source type="video/webm" src="https://s.ankama.com/www/static.ankama.com/ankama/cms/file/298/947705.webm">
+                <source type="video/ogv" src="https://s.ankama.com/www/static.ankama.com/ankama/cms/file/299/947708.ogv">
+            </video>
+
+        </div>
+        <div class="container" id="listeArticle">
+            {% for articlePar3 in articles| batch(2) |reverse %}
+                <div class="row">
+                    {% for article in articlePar3 |reverse %}
+                        <div class=" col-lg-6">
+                            <div class="card mb-3 shadow-sm">
+                                <img class="card-img-top" src="{{ asset('img/' ~article.image.dossier~'/'~article.image.url) }}" alt="{{ article.image.alt }}">
+                                <div class="card-header">
+									<div class="card-title"><a href="{{ path('app_home_detailarticle',{id:article.id}) }}" >{{ article.titre |upper }}</a></div>
+									<div class="cardTitleDate">Crée le {{ article.createAt | date('d/m/Y') }} </div>
+								 </div>
+								<div class="card-body">
+                                    
+
+                                    <div class="card-text">{{ article.description|raw('html')}}</div>
+                                    {#|striptags|slice(0,50)#}
+                                </div>
+                                <div class="card-footer text-right">
+                                    <a href="{{ path('app_home_detailarticle',{id:article.id}) }}" class="btn linkDetailArticle">EN SAVOIR PLUS</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+{% endblock %}

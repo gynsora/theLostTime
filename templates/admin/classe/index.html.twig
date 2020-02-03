@@ -1,0 +1,72 @@
+{% extends 'admin/base.html.twig' %}
+{% block title %}Classes de the Lost time{% endblock %}
+
+{% block body %}
+    <h1 class="text-center">Liste des Classe du jeu</h1>
+    <div class="container">
+        <div class="row ajout" >
+            <a href="{{ path("app_admin_createclasse") }}" class="btn btn-primary">Ajouter une classe</a>
+        </div>
+		
+        {% for classePar3 in classes| batch(3) %}
+            <div class="row">
+                {% for classe in classePar3 %}
+
+                    <div class="card  col-sm-12 col-md-6  col-lg-4">
+                        <img class="card-img-top" src="{{ asset('img/' ~classe.image.dossier~'/'~classe.image.url) }}" alt="{{ classe.image.alt }}">
+                        <div class="card-body">
+                            <h5 class="card-title">nom de la classe: {{ classe.name }}</h5>
+                            <p class="card-text">
+								element: 
+								<br>
+                                description :<br> {{ classe.description }}
+                            </p>
+                        </div>
+                        <div class="card-footer text-muted">
+                            <a href="{{ path("app_admin_updateclasse",{id:classe.id}) }}" class="btn btn-warning">Modifier</a>
+                            <button data-url="{{ path('app_admin_deleteclasse',{id:classe.id}) }}" data-nom="{{classe.name}}" type="button" class="btn btn-danger modelise {{ classe.name }}" data-toggle="modal" data-target="#exampleModalCenter">
+                                Supprimer
+                            </button>
+                        </div>
+                    </div>
+
+                {% endfor %}
+            </div>
+        {% endfor %}
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Suppression de classe</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Etes-vous sur de vouloir supprimer de classe :
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <a href="" class="btn btn-danger">Supprimer </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
+
+
+{% block javascript %}
+<script>
+$(function() {
+    $( ".modelise" ).on( "click", function() {
+        // console.log($(this).data('url'));
+        //console.log($(this).data('nom'));
+        $(".modal-body").html( "Etes-vous sur de vouloir supprimer la classe  : "+$(this).data('nom') );
+        $(".modal-footer a").attr("href", $(this).data('url') );
+    });
+});
+</script>
+{% endblock %}

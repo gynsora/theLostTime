@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} détails article{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Details Article</h1>
+    </div>
+    <div class="container-fluid " id="backgroundArticle">
+		<div class="container-fluid" >
+			<div class="row">
+				<div class=" col-lg-7 col-md-10  m-auto articleContent ">
+					<div class=" articleHeader ">
+						<div class ="row ">
+							<div class="col-9  ">
+								<div class=" articleTitle"> {{ article.titre |upper }} </div>
+								<div class="articleTitleDate"> Crée le {{ article.createAt | date('d/m/Y') }} </div>
+							</div> 
+							<div class="col-3 returnHome">
+							<a  href="{{ path("app_home_home") }}" >
+								<div class=" returnActuality"> 
+									<i class="fas fa-angle-left"></i> 
+									<span class="m-auto ">
+										Actualité  
+									</span> 
+								</div>
+							</div>
+							</a>
+						</div>
+					</div>
+					<img class="imgArticle" src="{{ asset('img/' ~article.image.dossier~'/'~article.image.url) }}" alt="{{ article.image.alt }}">
+					
+					<div class=" articleText " >					
+						<div id="articleDescription" >{{  article.description|raw('html') }} </div>						
+					</div>	
+					
+					
+				</div>
+			</div>
+			
+		</div>
+    </div>
+{% endblock %}

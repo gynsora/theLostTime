@@ -1,0 +1,32 @@
+{% extends 'admin/base.html.twig' %}
+{% block title %}Droits utilisateur{% endblock %}
+{% block body %}
+    <div class="container">
+        <h1 class="text-center">Liste des  utilisateurs </h1>
+
+        {% for usersPar3 in users| batch(3) %}
+            <div class="row">
+                {% for user in usersPar3 %}
+
+                    <div class="card col-md-4">
+                        <div class="card-body">
+                            <h5 class="card-title">nom utilisateur: <br> {{ user.username }}</h5>
+                            <p class="card-text">
+                                    liste des droits <br>
+                                <ul>
+                                    {%  for role in user.roles %}
+                                        <li>{{ role }}</li>
+                                    {% endfor %}
+                                 </ul>
+                            </p>
+                        </div>
+                        <div class="card-footer text-muted">
+                            <a href="{{ path("app_user_updateuser",{id:user.id}) }}" class="btn btn-warning">Modifier</a>
+                        </div>
+                    </div>
+
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

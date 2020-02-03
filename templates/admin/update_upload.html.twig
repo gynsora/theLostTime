@@ -1,0 +1,15 @@
+{% extends 'admin/base.html.twig' %}
+{% block body %}
+    <h1>Upload Image update</h1>
+
+    {{ form_start(createForm) }}
+    {{ form_widget(createForm) }}
+    <input type="submit" value="{% block btnValue %}modifier l'image{% endblock %}" class="btn btn-outline-success">
+    {{ form_end(createForm) }}
+
+    {{ dump(createForm.vars.data) }}
+    <img style="max-width: 100px;" src ="{{ vich_uploader_asset(createForm.vars.data, 'imageFile') }}">
+    {#%if createForm.image.vars.data is not null %}
+        <img style="max-width: 100px;" src ="{{ vich_uploader_asset(createForm.image.vars.data, 'imageFile') }}">
+    {% endif %#}
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends 'admin/base.html.twig' %}
+{% block title %}Images du site{% endblock %}
+{% block body %}
+    <h1 class="text-center">Liste des images du site</h1>
+    <div class="container">
+        <div class="row ajout" >
+            <a href="{{ path("app_admin_createimage") }}" class="btn btn-primary">Ajouter une image</a>
+        </div>
+            {% for imagePar3 in images| batch(3) %}
+                <div class="row">
+                    {% for image in imagePar3 %}
+
+                        <div class="card col-md-4">
+                            <img class="card-img-top" src="{{ asset('img/' ~image.dossier~'/'~image.url) }}" alt="{{ image.alt }}">
+                            <div class="card-body">
+                                <h5 class="card-title">nom de l'image: {{ image.name }}</h5>
+                                <p class="card-text">
+                                    texte aletrnatif: {{ image.alt }}   dossier : {{ image.dossier }} url de l'image: {{ image.url }}
+                                </p>
+                            </div>
+                            <div class="card-footer text-muted">
+                                <a href="{{ path("app_admin_updateimage",{id:image.id}) }}" class="btn btn-warning">Modifier</a>
+                                <button data-url="{{ path('app_admin_deleteimage',{id:image.id}) }}" data-nom="{{image.name}}" type="button" class="btn btn-danger modelise {{ image.name }}" data-toggle="modal" data-target="#exampleModalCenter">
+                                    Supprimer
+                                </button>
+                            </div>
+                        </div>
+
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Etes-vous sur de vouloir supprimer le projet :
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <a href="" class="btn btn-danger">Supprimer </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block javascript %}
+<script>
+$(function() {
+    $( ".modelise" ).on( "click", function() {
+        // console.log($(this).data('url'));
+        //console.log($(this).data('nom'));
+        $(".modal-body").html( "Etes-vous sur de vouloir supprimer l'image  : "+$(this).data('nom') );
+        $(".modal-footer a").attr("href", $(this).data('url') );
+    });
+});
+</script>
+{% endblock %}

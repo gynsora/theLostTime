@@ -1,0 +1,510 @@
+@import url('https://fonts.googleapis.com/css?family=Quintessential');
+/*test*/
+
+.red{
+	background-color: red;
+	
+}
+.yellow{
+	background-color: yellow;
+}
+/*GENERAL*/
+body{
+	background-color:#e2dbab;
+}
+h1{
+	font-family: 'Quintessential', cursive;
+}
+.main{
+    padding-top: 80px;
+    min-height: 700px;
+}
+
+/*FIN GENERAL*/
+
+
+/*ERROR*/
+.divImageError{
+	text-align: center ;
+	padding-top:100px
+}
+/*FIN ERROR*/
+
+/*MENU*/
+.navbar{
+    
+	font-family: 'Quintessential', cursive;
+	background-color: #121212 !important;
+	border-bottom: 1px solid #e2dbab ;
+	/*background-color: rgba(0, 0, 0,0.7) !important;*/
+}
+
+.nav-link , .navbar-brand {
+	color:   #927343 !important; /*#927343 #c9aa71 #927343*/
+}
+.centerMenu {	
+	font-weight: bold; 	
+	
+}
+.nav-link:hover {
+	color:#e2dbab !important;
+}
+nav .active .nav-link{
+	color: #fff  !important;
+}
+
+.navigation{
+    color:white !important;
+    margin-left: 5px;
+}
+#bienvenue{
+    color: white;
+}
+/*FIN MENU*/
+
+/*ACCUEIL*/
+#backgroundAccueil{
+	padding:0;
+    /*
+	background-image: url("../img/fondAccueil.PNG");
+	background-color: #fff;
+	min-height:1200px ;
+	background-repeat: no-repeat;
+	background-position:  top center;
+	background-size: cover;*/
+	background-color: rgb(15, 10, 14);
+	
+}
+   
+
+.jumbotron-fluid{
+    background-image:url("../img/baniere.png") !important;
+    background-size : cover ;
+    color:white;
+    min-height: 700px;
+    display:none;
+}
+.ak-widget-video
+{
+    display:block;
+    width:100%;
+    margin:0 auto;
+    background-size:100%;
+}
+#introduction{
+    position:absolute;
+	color:#fff;
+    top: 100px;
+	left:10% ;
+    /*background-color: yellow;
+    text-align:center;
+    color:white;
+    font-weight: bold;*/
+}
+#introduction img{	
+	width:200px;
+	
+}
+#textBaniere{
+	padding-top:20px;
+	font-size:25px;
+	font-weight:bold ;	
+	font-family: 'Quintessential', cursive;
+	color:   #927343;   
+	
+}
+#textBaniere span {
+	padding :5px;
+	background-color: rgba(226, 219, 171,0.4) ;
+	margin-top : 5px;
+	
+}
+
+#listeArticle{
+    padding-top: 20px;
+	background-color: rgba(226, 219, 171,0.4) ;
+	
+     /*background-color: yellow;*/
+}
+
+
+.card{
+    padding:0px;
+	margin:0;    
+	border-radius:0;
+	color:grey;
+}
+.card-img-top{
+    /*height:200px;*/
+    width:100%;
+	padding:0;
+	border-bottom: 6px solid #927343 ;
+	background-color : #fff ;
+	
+}
+.card-header{
+	/*background-color : #e2dbab   #927343 */ ;
+	
+}
+.card-title{
+	margin-bottom:0;
+	font-size: 20px;
+	font-family: 'Quintessential', cursive;
+	font-weight:bold ;
+	
+	
+}
+.card-title a{
+	color :#927343 ;
+	cursor:pointer ;
+}
+
+.card-title a:hover{
+	color :green ;
+	text-decoration: none;
+}
+
+.cardTitleDate{
+	line-height: 2rem;
+}
+.card-body{
+	height : 150px;
+	overflow:hidden;
+	font-family: 'Quintessential', cursive;
+	font-size : 18px;
+	/*
+	border-bottom-style:solid;
+    border-bottom-width:10px;  
+    border-bottom-color:rgba(0,0,0,0.1);*/
+	
+}
+.card-footer{
+	/*background-color: #927343;	*/
+}
+.linkDetailArticle{
+	font-family: 'Quintessential', cursive;
+	font-weight: bold ;
+	background-color : none ;
+	color: #927343;
+	border-radius:0 ; 
+	border: 1px solid #927343 ;
+	
+}
+.linkDetailArticle:hover{
+	
+	background-color : #927343 ;
+	color: #fff;
+	
+}
+.paddingMinimum{
+    padding-top:80px;
+}
+
+/* FIN ACCUEIL */
+
+/* DETAILS ARTICLE*/
+#backgroundArticle{
+	padding-top:60px;
+	padding-bottom:30px;
+	min-height:600px;
+	background-color: rgb(15, 10, 14);
+	/*
+	background-image: url("../img/fondAccueil.PNG");
+	background-repeat: no-repeat;*/
+	
+	
+	
+}
+.imgArticle{
+	width:100%;
+}
+
+.articleContent{
+	padding: 25px ;
+	background-color: #e2dbab;
+}
+
+.articleHeader{
+	background-color: #927343 ;
+	color:  #e2dbab;
+	padding-top :5px;	
+	padding-bottom:10px;
+	padding-left:30px;
+}
+.articleTitle{
+	margin-top: 15px;
+	line-height: 1.5rem;
+	font-size :25px;
+	font-family: 'Quintessential', cursive;
+}
+.articleTitleDate{
+	line-height: 1rem;
+	font-size :12px;
+}
+.returnActuality{
+	margin-top: 15px;
+	background-color:rgba(0, 0, 0,0.3);
+	margin-right:10px ;
+	padding:2px;
+	padding-top:5px;
+	padding-bottom:5px;
+	
+}
+.returnActuality span{
+	
+	padding-left:25%;
+}
+.returnHome a{	
+	color:#fff ;
+	cursor:pointer ;
+	text-decoration: none;
+}
+.returnHome a:hover span{	
+	text-decoration: underline;
+}
+
+.articleText{
+	padding: 20px ;
+}
+
+#articleDescription{
+	padding:15px;
+	padding-top:25px;
+	color:grey;
+	font-family: 'Quintessential', cursive;
+	font-size:20px ;
+}
+/* FIN DETAILS ARTICLE*/
+
+/*CLASSES*/
+#headerClasses{
+	font-family: 'Quintessential', cursive;
+	color : #927343 ;
+}
+
+.topOfMenuLink{
+	padding-top : 55px;
+	
+}
+
+#voixWarrior, #voixMagician, #voixHunter{
+	color: #5c2f01;	
+	font-family: 'Quintessential', cursive;
+	text-align:center;
+}
+#voixWarrior p, #voixMagician p, #voixHunter p{
+	
+	font-size : 20px;
+}
+
+
+
+.classesVoixImage{
+	width:90%;
+}
+ /*bouton lié au guerrier*/
+.btn-primary{
+	background-color:#1f7ebc;
+}
+
+#voixWarrior{
+	/*background-color: #fff  ; */
+	padding-top:20px;
+	padding-bottom:20px;
+}
+#voixWarrior h2, #voixWarrior p{
+	color: #1f7ebc ;
+}
+/*bouton lié au magicien*/
+.btn-warning{
+	background-color:#f6a242;
+	color:#34243b;
+}
+#voixMagician{
+	background-color: rgba(52, 36, 59,0.7) ; 
+	padding-top:20px;
+	padding-bottom:20px;
+}
+#voixMagician h2,#voixMagician p{
+	color: #f6a242  ;
+}
+/*bouton lié au chasseur*/
+.btn-success{
+	
+}
+#voixHunter{
+	/*background-color: #f1f694  ; */
+	padding-top:20px;
+	padding-bottom:20px;
+}
+#voixHunter h2,#voixHunter p{
+	color: green;
+}
+
+.navImage{
+	width:100%;
+}
+
+.ici{
+	opacity: 0.5;
+}
+.tab-content{
+	margin-top:15px;
+}
+.tab-content h2{
+	color: #5c2f01;	
+	font-family: 'Quintessential', cursive;
+	text-align:center;
+}
+.tab-content p{
+	color: grey;	
+	font-family: 'Quintessential', cursive;
+	font-size:20px;
+	text-align:center;
+}
+.divImageClasse{
+	text-align:center;
+}
+.imageClasse{
+	height:350px;
+}
+
+/*FIN CLASSES*/
+
+
+
+
+/*FOOTER*/
+footer{
+	
+    padding-top: 50px;
+    height:200px;
+    background-color: #121212 ;
+    border-top: 2px solid #e2dbab;
+   color:#fff ;
+}
+
+.coord{
+    padding-bottom: 20px;
+}
+.reseaux{/*contient tout les icons du footer*/
+    font-size: 25px;
+    
+}
+
+#facebook,#linkedin{
+    margin-right: 10px;
+    margin-left: 10px;
+    color: #fff;
+
+}
+
+.reseaux a:hover{
+    color:cyan !important;
+    text-decoration: none;
+}
+.reseaux a:visited{
+    color:#fff ;
+    /*text-decoration: none;*/
+}
+
+.copyright{
+    text-align: center;
+}
+.social-icons{text-align:center;}
+.social-icons a {
+    display: inline-block;
+    height: 3.5rem;
+    width: 3.5rem;   
+    color: #fff !important;
+    border-radius: 100%;
+	border: 1px solid #fff ;
+    text-align: center;
+    font-size: 1.5rem;
+    line-height: 3.5rem;
+    margin-right: 1rem;
+}
+
+
+
+.social-icons a:last-child {
+    margin-right: 0;
+}
+
+.social-icons a:hover {
+    background-color: #927343;
+	color: #fff !important;
+}
+/*FIN FOOTER*/
+
+
+@media (max-width:1040px) {
+	/*DETAILS ARTICLE*/
+	.returnActuality span{	
+		padding-left:10%;
+	}
+	/*FIN DETAILS ARTICLE*/
+	
+	
+}
+
+@media (max-width:881px) {
+	/*ACCUEIL*/
+	#introduction{
+		left:5% ;
+	}
+	
+	#introduction img{	
+		width:100%;
+		padding-bottom: 30px !important;		
+	}
+	.ak-widget-video{
+		display:none;
+	}
+	#textBaniere{
+		font-size:20px;
+		padding-top:0;
+	}
+	
+	#videoAccueil{
+		min-height:300px;
+		/*background-image: url("../img/fondAccueil.PNG");
+		background-position:  top;
+		background-size: cover;*/
+		background-color: #121212 ;
+	}
+	/*FIN ACCUEIL*/
+	
+	/*DETAILS ARTICLE*/
+	.articleContent{
+		padding: 5px ;
+	}
+	.returnActuality{
+		display:none;
+	}
+	/*FIN DETAILS ARTICLE*/
+	
+	/*CLASSES*/
+	.classesVoixImage{
+		width:30%;
+	}
+	/*FIN CLASSES*/
+}
+
+@media (max-width:580px) {
+	/*ACCUEIL*/
+	#introduction{
+		text-align: center ;
+		left:0 ;
+	}
+	#introduction img{	
+		/*display:none;*/
+		width:50%;
+	
+	}
+	#textBaniere{
+		font-size:30px;
+		padding-top:0;
+	}
+	
+}
